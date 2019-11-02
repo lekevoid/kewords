@@ -1,0 +1,74 @@
+#grid {
+	align-items: center;
+	border: 2px solid #668;
+	box-shadow: 2px 2px 10px #000;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+
+	.row {
+		align-items: center;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: center;
+
+		.cell {
+			align-items: center;
+			background-color: #228;
+			border: 2px solid #668;
+			display: flex;
+			justify-content: center;
+			letter-spacing: -2px;
+			position: relative;
+		}
+	}
+
+	&.grid8 {
+		transform: scale(0.85);
+	}
+
+	&.grid9 {
+		transform: scale(0.75);
+	}
+
+	&.grid10 {
+		transform: scale(0.65);
+	}
+
+	&.grid11 {
+
+		transform: scale(0.58);
+	}
+
+	&.grid12 {
+		transform: scale(0.54);
+	}
+
+	&.grid13 {
+		transform: scale(0.5);
+	}
+
+	&.grid14 {
+		transform: scale(0.46);
+	}
+
+	&.grid15 {
+		transform: scale(0.42);
+	}
+}
+
+#app.is_running {
+	#grid {
+
+		&.grid10,
+		&.grid11,
+		&.grid12,
+		&.grid13,
+		&.grid14,
+		&.grid15 {
+			.die .face {
+				font-weight: bold;
+			}
+		}
+	}
+}
