@@ -13,7 +13,7 @@
 	export default {
 		name: 'Die',
 		data() {
-			const half = this.dieSize;
+			const half = (this.dieSize / 2);
 			return {
 				faces: {
 					f_back: '',
@@ -30,7 +30,7 @@
 				dieDims: {
 					height: this.dieSize + "px",
 					width: this.dieSize + "px",
-					fontSize: (this.dieSize) + "px"
+					fontSize: (this.dieSize * 0.8) + "px"
 				},
 				facesTransforms: {
 					// Necessary evil...
