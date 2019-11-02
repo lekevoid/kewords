@@ -258,7 +258,6 @@
 		padding: 1rem 0;
 		transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 		transition-timing-function: ease-in-out;
-		-webkit-tap-highlight-color: transparent;
 
 		&.play {
 			background: radial-gradient(ellipse at center, #6F6 0%, #060 100%);
