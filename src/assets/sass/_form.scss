@@ -165,7 +165,7 @@
 		.field {
 			align-items: center;
 			display: flex;
-			justify-content: space-between;
+			justify-content: center;
 			width: 100%;
 		}
 
@@ -182,7 +182,7 @@
 			height: 6rem;
 			justify-self: flex-end;
 			margin: 0 1vmin;
-			max-width: 100%;
+			max-width: 96px;
 			opacity: 0.6;
 			outline: none;
 			padding: 0;
@@ -303,29 +303,14 @@
 	}
 }
 
-/*
 #app.is_running {
 	#params {
 		#langs {
 			button:not(.active) {
 				margin: 0;
 				max-width: 0%;
-			}
-
-			button.active {
-				transform: scale(2);
-				transition: transform 0.3s ease-in-out 0.5s;
+				pointer-events: none;
 			}
 		}
-
-		#core_params {
-			max-height: 20vmin;
-			transform: scale(0.5);
-		}
-	}
-
-	#actions {
-		bottom: -75vh;
 	}
 }
-*/
