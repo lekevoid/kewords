@@ -28,14 +28,23 @@
 		font-weight: bolder;
 		justify-content: center;
 		left: 0;
-		padding-top: 3px;
 		padding-right: 3px;
+		padding-top: 3px;
 		position: absolute;
 		text-transform: capitalize;
 		top: 0;
 
 		&.doubleLetter {
 			font-family: Arial Narrow, Arial, Helvetica, sans-serif;
+		}
+
+		&.front {
+
+			&.n,
+			&.z {
+				padding-bottom: 8px;
+				text-decoration: underline;
+			}
 		}
 	}
 }

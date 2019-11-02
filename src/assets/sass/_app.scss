@@ -61,30 +61,13 @@ body {
         &#right {
             align-items: center;
             flex: 0 0 75%;
-            height: 100vh;
+			height: 100vh;
+			max-height:768px;
             justify-content: center;
             max-width: 75%;
-            transform-origin: 68% 50%;
             width: 75%;
         }
     }
-
-
-    /*
-&.is_running {
-	padding-top: 8rem;
-
-	.wrap {
-		&#left {
-			transform: scale(0.5);
-		}
-
-		&#right {
-			transform: scale(1.4) translateY(-5vh);
-		}
-	}
-}
-*/
 
     &.is_paused {
 
