@@ -224,31 +224,6 @@
 	}
 }
 
-/*
-@media screen and (max-width: 960px) and (orientation:landscape),
-screen and (max-width: 767px) {
-	#timer {
-		#view_options {
-			margin-bottom: 0;
-
-			button {
-				font-size: 3rem;
-				height: 5rem;
-			}
-		}
-
-		#view_timer #time {
-			.number {
-				font-size: 5rem;
-			}
-
-			.colon {
-				font-size: 5vmin;
-			}
-		}
-	}
-}
-*/
 @media screen and (max-width: 960px) and (orientation:landscape),
 screen and (max-width: 767px) {
 	#timer {
