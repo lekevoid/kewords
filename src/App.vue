@@ -21,6 +21,7 @@
 		</div>
 		<div class="wrap" id="right">
 			<Grid :gridX="gridX" :gridY="gridY" :allDiceTemplates="dice" :isGameRunning="gameRunning" />
+			<Dico />
 		</div>
 		<div id="pauseOverlay" v-if="gamePaused" @click="togglePause">
 			<font-awesome-icon icon="pause" />
@@ -28,33 +29,25 @@
 	</div>
 </template>
 <script>
-	import Grid from "./components/Grid.vue"
-	import ParamsForm from "./components/ParamsForm.vue"
-	import Timer from "./components/Timer.vue"
-	import {
-		library
-	} from "@fortawesome/fontawesome-svg-core"
-	import {
-		faPlay
-	} from "@fortawesome/free-solid-svg-icons"
-	import {
-		faStop
-	} from "@fortawesome/free-solid-svg-icons"
-	import {
-		faPause
-	} from "@fortawesome/free-solid-svg-icons"
-	library.add(faPlay)
-	library.add(faStop)
-	library.add(faPause)
-	import "./assets/styles.css"
+	import Grid from "./components/Grid.vue";
+	import ParamsForm from "./components/ParamsForm.vue";
+	import Timer from "./components/Timer.vue";
+	import Dico from "./components/Dico.vue";
+
+	import { library } from "@fortawesome/fontawesome-svg-core";
+	import { faPlay } from "@fortawesome/free-solid-svg-icons";
+	import { faStop } from "@fortawesome/free-solid-svg-icons";
+	import { faPause } from "@fortawesome/free-solid-svg-icons";
+	library.add(faPlay);
+	library.add(faStop);
+	library.add(faPause);
+
+	import "./assets/styles.css";
+
 	export default {
 		/* eslint-disable no-console */
 		name: "app",
-		components: {
-			Grid,
-			ParamsForm,
-			Timer
-		},
+		components: { Grid, ParamsForm, Timer, Dico },
 		data() {
 			return {
 				diceTemplates: ["aaafrs", "aaeeee", "aaeeoo", "aafirs", "abdeio", "adennn", "aeeeem", "aeegmu", "aegmnn", "aeilmn", "aeinou", "afirsy", "@$&#%*", "bbjkxz", "ccenst", "cddlnn", "ceiitt", "ceipst", "cfgnuy", "ddhnot", "dhhlor", "dhhnow", "dhlnor", "ehilrs", "eiilst", "eilpst", "eioeio", "emttto", "ensssu", "gorrvw", "hirstv", "hoprst", "iprsyy", "jk%wxz", "nootuw", "ooottu"],
