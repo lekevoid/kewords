@@ -44,11 +44,11 @@
 						if (data.length > 0) {
 							this.valid = false;
 							for (let x=0; x<data.length; x++) {
-								if (data[x] && data[x].meta && data[x].meta.id.includes(this.word)) {
+								if (data[x] && data[x].meta && data[x].meta.id.includes(this.word.toLowerCase())) {
 									this.valid = true;
 								}
 
-								if (data[x] && data[x].meta && data[x].meta.stems && data[x].meta.stems.includes(this.word)) {
+								if (data[x] && data[x].meta && data[x].meta.stems && data[x].meta.stems.includes(this.word.toLowerCase())) {
 									this.valid = true;
 								}
 							}
