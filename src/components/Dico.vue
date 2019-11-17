@@ -4,7 +4,7 @@
 			<span :class="['arrow', { left : !open, right : open }]"></span>
 		</button>
 		<form>
-			<input type="text" v-model="word" class="input_word" />
+			<input type="text" v-model="word" class="input_word" id="input_word" />
 			<button type="submit" @click.prevent="apiCall()" class="btn_search">
 				<img :src="icon_search" />
 			</button>
@@ -50,6 +50,7 @@
 				this.valid = null;
 				this.apiResult = "";
 				this.apiError = "";
+				document.getElementById("input_word").blur();
 			},
 			apiCall() {
 				this.resetState();
