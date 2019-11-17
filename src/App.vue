@@ -1,5 +1,5 @@
 <template>
-	<div id="app" :class="[{ is_running: gameRunning, is_paused: gamePaused, is_ended: gameEnded }]">
+	<div id="app" :class="[{ is_running: gameRunning, is_paused: gamePaused, is_ended: gameEnded, dictionary_open: dictionaryOpen }]">
 		<div class="wrap" id="left">
 			<ParamsForm :startGridX="gridX" :startGridY="gridY" :isGameRunning="gameRunning" :lang="language" />
 			<Timer :initialTime="initialTimeSeconds" :isGameRunning="gameRunning" :isGamePaused="gamePaused" :isGameEnded="gameEnded" />
@@ -21,8 +21,8 @@
 		</div>
 		<div class="wrap" id="right">
 			<Grid :gridX="gridX" :gridY="gridY" :allDiceTemplates="dice" :isGameRunning="gameRunning" />
-			<Dico />
 		</div>
+		<Dico :open="dictionaryOpen" />
 		<div id="pauseOverlay" v-if="gamePaused" @click="togglePause">
 			<font-awesome-icon icon="pause" />
 		</div>
@@ -59,7 +59,8 @@
 				dice: [],
 				language: "en",
 				initialTimeSeconds: 300,
-				forceLetterResize: true
+				forceLetterResize: true,
+				dictionaryOpen: false
 			}
 		},
 		methods: {

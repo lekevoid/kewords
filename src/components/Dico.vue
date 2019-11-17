@@ -1,13 +1,30 @@
 <template>
-	<form id="dictionary" @submit.prevent="apiCall()" :class="[{ valid : valid === true, invalid : valid === false }]">
-		<input type="text" v-model="word" />
-		<button type="submit" @click.prevent="apiCall()">Search</button>
-	</form>
+	<div id="dictionary" @submit.prevent="apiCall()" :class="[{ open : open, valid : valid === true, invalid : valid === false }]">
+		<button @click="toggleOpen()" class="btn_open">
+			<span :class="['arrow', { left : !open, right : open }]"></span>
+		</button>
+		<form>
+			<input type="text" v-model="word" class="input_word" />
+			<button type="submit" @click.prevent="apiCall()" class="btn_search">
+				<img :src="icon_search" />
+			</button>
+		</form>
+		<div class="definitions" v-if="valid">
+			<div class="def" v-for="d, i in definitions" :key="i">
+				<div class="row">
+					<div class="word">{{d.word}} :</div>
+					<div class="type">{{d.type}}</div>
+				</div>
+				<div class="shortdef" v-for="s, k in d.defs" :key="k">
+					{{s}}
+				</div>
+			</div>
+		</div>
+		<div class="definitions not_found" v-if="valid === false">Word not found.</div>
+	</div>
 </template>
 <script>
-	import { library } from "@fortawesome/fontawesome-svg-core";
-	import { faLink } from "@fortawesome/free-solid-svg-icons";
-	library.add(faLink);
+	import icon_search from "../assets/img/icon_search.svg";
 
 	const axios = require("axios");
 
@@ -19,10 +36,14 @@
 				loading: false,
 				valid: null,
 				apiResult: "",
-				apiError: ""
+				apiError: "",
+				definitions: "",
+				icon_search: icon_search
 			}
 		},
-		props: [],
+		props: {
+			open: Boolean
+		},
 		methods: {
 			resetState() {
 				this.loading = false;
@@ -46,14 +67,17 @@
 							for (let x=0; x<data.length; x++) {
 								if (data[x] && data[x].meta && data[x].meta.id.includes(this.word.toLowerCase())) {
 									this.valid = true;
+									this.formatDefinition(data);
 								}
 
 								if (data[x] && data[x].meta && data[x].meta.stems && data[x].meta.stems.includes(this.word.toLowerCase())) {
 									this.valid = true;
+									this.formatDefinition(data);
 								}
 							}
 						} else {
 							this.valid = false;
+							this.formatDefinition(null);
 						}
 
 						this.loading = false;
@@ -66,6 +90,30 @@
 					.finally(() => {
 						// always executed
 					});
+			},
+			formatDefinition(data) {
+				if (data) {
+					this.definitions = data.map((d, i) => {
+						return {
+							word: this.word,
+							type: d.fl,
+							defs: this.capitalize(d.shortdef)
+						}
+					});
+				}
+			},
+			capitalize(str) {
+				let r = [];
+				if (typeof(str) === "object") {
+					r = str.map((s) => {
+						return s.slice(0, 1).toUpperCase() + s.slice(1)
+					})
+				}
+				console.log(r);
+				return r;
+			},
+			toggleOpen() {
+				this.$parent.dictionaryOpen = !this.$parent.dictionaryOpen;
 			}
 		},
 		created() {

@@ -33,23 +33,17 @@
 	</div>
 </template>
 <script>
-	import {
-		library
-	} from '@fortawesome/fontawesome-svg-core'
-	import {
-		faHourglassHalf
-	} from '@fortawesome/free-solid-svg-icons'
-	import {
-		faStopwatch
-	} from '@fortawesome/free-solid-svg-icons'
-	import {
-		faEyeSlash
-	} from '@fortawesome/free-solid-svg-icons'
-	library.add(faHourglassHalf)
-	library.add(faStopwatch)
-	library.add(faEyeSlash)
+	import { library } from "@fortawesome/fontawesome-svg-core";
+	import { faHourglassHalf } from "@fortawesome/free-solid-svg-icons";
+	import { faStopwatch } from "@fortawesome/free-solid-svg-icons";
+	import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
+	library.add(faHourglassHalf);
+	library.add(faStopwatch);
+	library.add(faEyeSlash);
+
 	export default {
-		name: 'Timer',
+		name: "Timer",
 		data() {
 			return {
 				remainingTime: this.initialTime,
@@ -64,10 +58,10 @@
 				droppedSand: {
 					height: "0%"
 				},
-				view: 'timer'
+				view: "timer"
 			}
 		},
-		props: ['initialTime', 'isGameRunning', 'isGamePaused', 'isGameEnded'],
+		props: ["initialTime", "isGameRunning", "isGamePaused", "isGameEnded"],
 		created() {},
 		methods: {
 			clock() {

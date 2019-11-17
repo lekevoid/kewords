@@ -8,9 +8,10 @@
 	</div>
 </template>
 <script>
-	import Die from './Die.vue'
+	import Die from "./Die.vue";
+
 	export default {
-		name: 'Grid',
+		name: "Grid",
 		components: {
 			Die
 		},
@@ -25,7 +26,7 @@
 				dieSize: 80
 			}
 		},
-		props: ['allDiceTemplates', 'gridX', 'gridY', 'isGameRunning', 'forceLetterResize'],
+		props: ["allDiceTemplates", "gridX", "gridY", "isGameRunning", "forceLetterResize"],
 		computed: {
 			biggestSide() {
 				return Math.max(this.gridX, this.gridY);
@@ -56,7 +57,7 @@
 		},
 		created() {
 			setTimeout(this.resizeCells, 100);
-			window.addEventListener('resize', this.resizeCells);
+			window.addEventListener("resize", this.resizeCells);
 		},
 		watch: {
 			gridX() {

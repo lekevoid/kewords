@@ -104,6 +104,17 @@ body {
 	}
 }
 
+#app.dictionary_open {
+
+	#left {
+		transform: translateX(-40rem);
+	}
+
+	#right {
+		transform: translateX(-35rem);
+	}
+}
+
 #pauseOverlay {
 	align-items: center;
 	animation: pauseOverlayDisplay 1s;
