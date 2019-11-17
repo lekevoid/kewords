@@ -33,6 +33,7 @@
 		position: absolute;
 		text-transform: capitalize;
 		top: 0;
+		user-select: none;
 
 		&.doubleLetter {
 			font-family: Arial Narrow, Arial, Helvetica, sans-serif;
