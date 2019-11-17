@@ -4,7 +4,7 @@
 			<span :class="['arrow', { left : !open, right : open }]"></span>
 		</button>
 		<form>
-			<input type="text" v-model="word" class="input_word" id="input_word" />
+			<input type="text" v-model="word" class="input_word" id="input_word" autocorrect="off" autocapitalize="none" />
 			<button type="submit" @click.prevent="apiCall()" class="btn_search">
 				<img :src="icon_search" />
 			</button>
