@@ -1,12 +1,14 @@
 <template>
 	<div id="dictionary" @submit.prevent="apiCall()" :class="[{ open : open, valid : valid === true, invalid : valid === false }]">
 		<button @click="toggleOpen()" class="btn_open">
-			<img :src="icon_dictionary" />
+			<img v-if="theme === 'classic'" :src="icon_dictionary" />
+			<img v-if="theme === 'matrix'" :src="icon_dictionary_matrix" />
 		</button>
 		<form>
 			<input type="text" v-model="word" class="input_word" id="input_word" autocorrect="off" autocapitalize="none" />
 			<button type="submit" @click.prevent="apiCall()" class="btn_search">
-				<img :src="icon_search" />
+				<img v-if="theme === 'classic'" :src="icon_search" />
+				<img v-if="theme === 'matrix'" :src="icon_search_matrix" />
 			</button>
 		</form>
 		<div class="definitions" v-if="valid">
@@ -41,8 +43,10 @@
 				apiResult: "",
 				apiError: "",
 				definitions: "",
-				icon_dictionary: (this.theme === "matrix" ? icon_dictionary_matrix : icon_dictionary),
-				icon_search: (this.theme === "matrix" ? icon_search_matrix : icon_search),
+				icon_dictionary: icon_dictionary,
+				icon_dictionary_matrix: icon_dictionary_matrix,
+				icon_search: icon_search,
+				icon_search_matrix: icon_search_matrix,
 			}
 		},
 		props: {
