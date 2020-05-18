@@ -2,11 +2,11 @@
 	<!-- <div :class="['die', { no_anim: !isGameRunning }]" :style="initialStyles"> -->
 	<div :class="['die', animClass]" :style="[initialStyles, dieDims]">
 		<div :class="['face', 'front', faces.f_front, {doubleLetter: faces.f_front.length >= 2}]" :style="[facesTransforms.f_front, dieDims]">{{ faces.f_front }}</div>
-		<div v-if="showAllFace" :class="['face', 'back', {doubleLetter: faces.f_back.length >= 2}]" :style="[facesTransforms.f_back, dieDims]">{{ faces.f_back }}</div>
-		<div v-if="showAllFace" :class="['face', 'top', {doubleLetter: faces.f_top.length >= 2}]" :style="[facesTransforms.f_top, dieDims]">{{ faces.f_top }}</div>
-		<div v-if="showAllFace" :class="['face', 'bottom', {doubleLetter: faces.f_bottom.length >= 2}]" :style="[facesTransforms.f_bottom, dieDims]">{{ faces.f_bottom }}</div>
-		<div v-if="showAllFace" :class="['face', 'left', {doubleLetter: faces.f_left.length >= 2}]" :style="[facesTransforms.f_left, dieDims]">{{ faces.f_left }}</div>
-		<div v-if="showAllFace" :class="['face', 'right', {doubleLetter: faces.f_right.length >= 2}]" :style="[facesTransforms.f_right, dieDims]">{{ faces.f_right }}</div>
+		<div v-if="showAllFaces" :class="['face', 'back', {doubleLetter: faces.f_back.length >= 2}]" :style="[facesTransforms.f_back, dieDims]">{{ faces.f_back }}</div>
+		<div v-if="showAllFaces" :class="['face', 'top', {doubleLetter: faces.f_top.length >= 2}]" :style="[facesTransforms.f_top, dieDims]">{{ faces.f_top }}</div>
+		<div v-if="showAllFaces" :class="['face', 'bottom', {doubleLetter: faces.f_bottom.length >= 2}]" :style="[facesTransforms.f_bottom, dieDims]">{{ faces.f_bottom }}</div>
+		<div v-if="showAllFaces" :class="['face', 'left', {doubleLetter: faces.f_left.length >= 2}]" :style="[facesTransforms.f_left, dieDims]">{{ faces.f_left }}</div>
+		<div v-if="showAllFaces" :class="['face', 'right', {doubleLetter: faces.f_right.length >= 2}]" :style="[facesTransforms.f_right, dieDims]">{{ faces.f_right }}</div>
 	</div>
 </template>
 <script>
@@ -16,7 +16,7 @@
 			const half = (this.dieSize / 2);
 			return {
 				animClass: "static",
-				showAllFace: true,
+				showAllFaces: true,
 				faces: {
 					f_back: '',
 					f_bottom: '',
@@ -66,7 +66,7 @@
 				return num;
 			},
 			rollTheDice() {
-				this.showAllFace = true;
+				this.showAllFaces = true;
 				this.animClass = `anim_${Math.ceil(Math.random() * 7)}_${Math.ceil(Math.random() * 4)}`;
 			}
 		},
@@ -107,7 +107,7 @@
 					}, 600);
 
 					setTimeout(() => {
-						this.showAllFace = false;
+						this.showAllFaces = false;
 					}, 3000);
 
 				}

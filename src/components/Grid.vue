@@ -2,18 +2,21 @@
 	<div id="grid" :class="gridClass">
 		<div v-for="(y, indexA) in gridY" :key="indexA+y" class="row" :id="y">
 			<div v-for="(x, indexB) in gridX" :key="indexB+x" class="cell" :style="cellSize">
-				<Die :template="getDie(x,y)" :isGameRunning="isGameRunning" :dieSize="dieSize" />
+				<DieClassic v-if="theme == 'classic'" :template="getDie(x,y)" :isGameRunning="isGameRunning" :dieSize="dieSize" />
+				<DieMatrix v-if="theme == 'matrix'" :template="getDie(x,y)" :isGameRunning="isGameRunning" :dieSize="dieSize" />
 			</div>
 		</div>
 	</div>
 </template>
 <script>
 	import DieClassic from "./DieClassic.vue";
+	import DieMatrix from "./DieMatrix.vue";
 
 	export default {
 		name: "Grid",
 		components: {
-			Die: DieClassic
+			DieClassic: DieClassic,
+			DieMatrix: DieMatrix
 		},
 		data() {
 			return {
