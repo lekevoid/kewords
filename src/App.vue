@@ -61,7 +61,7 @@
 				initialTimeSeconds: 300,
 				forceLetterResize: true,
 				dictionaryOpen: false,
-				theme: "matrix",
+				theme: "classic",
 			}
 		},
 		methods: {
