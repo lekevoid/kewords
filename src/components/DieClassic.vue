@@ -1,12 +1,12 @@
 <template>
 	<!-- <div :class="['die', { no_anim: !isGameRunning }]" :style="initialStyles"> -->
-	<div class="die" :style="[initialStyles, dieDims]">
+	<div :class="['die', animClass]" :style="[initialStyles, dieDims]">
 		<div :class="['face', 'front', faces.f_front, {doubleLetter: faces.f_front.length >= 2}]" :style="[facesTransforms.f_front, dieDims]">{{ faces.f_front }}</div>
-		<div v-if="faces.f_back !== 'hide'" :class="['face', 'back', {doubleLetter: faces.f_back.length >= 2}]" :style="[facesTransforms.f_back, dieDims]">{{ faces.f_back }}</div>
-		<div v-if="faces.f_top !== 'hide'" :class="['face', 'top', {doubleLetter: faces.f_top.length >= 2}]" :style="[facesTransforms.f_top, dieDims]">{{ faces.f_top }}</div>
-		<div v-if="faces.f_bottom !== 'hide'" :class="['face', 'bottom', {doubleLetter: faces.f_bottom.length >= 2}]" :style="[facesTransforms.f_bottom, dieDims]">{{ faces.f_bottom }}</div>
-		<div v-if="faces.f_left !== 'hide'" :class="['face', 'left', {doubleLetter: faces.f_left.length >= 2}]" :style="[facesTransforms.f_left, dieDims]">{{ faces.f_left }}</div>
-		<div v-if="faces.f_right !== 'hide'" :class="['face', 'right', {doubleLetter: faces.f_right.length >= 2}]" :style="[facesTransforms.f_right, dieDims]">{{ faces.f_right }}</div>
+		<div v-if="showAllFace" :class="['face', 'back', {doubleLetter: faces.f_back.length >= 2}]" :style="[facesTransforms.f_back, dieDims]">{{ faces.f_back }}</div>
+		<div v-if="showAllFace" :class="['face', 'top', {doubleLetter: faces.f_top.length >= 2}]" :style="[facesTransforms.f_top, dieDims]">{{ faces.f_top }}</div>
+		<div v-if="showAllFace" :class="['face', 'bottom', {doubleLetter: faces.f_bottom.length >= 2}]" :style="[facesTransforms.f_bottom, dieDims]">{{ faces.f_bottom }}</div>
+		<div v-if="showAllFace" :class="['face', 'left', {doubleLetter: faces.f_left.length >= 2}]" :style="[facesTransforms.f_left, dieDims]">{{ faces.f_left }}</div>
+		<div v-if="showAllFace" :class="['face', 'right', {doubleLetter: faces.f_right.length >= 2}]" :style="[facesTransforms.f_right, dieDims]">{{ faces.f_right }}</div>
 	</div>
 </template>
 <script>
@@ -15,6 +15,8 @@
 		data() {
 			const half = (this.dieSize / 2);
 			return {
+				animClass: "static",
+				showAllFace: true,
 				faces: {
 					f_back: '',
 					f_bottom: '',
@@ -64,6 +66,10 @@
 				return num;
 			},
 			rollTheDice() {
+				this.showAllFace = true;
+
+				this.animClass = `anim_${Math.ceil(Math.random() * 7)}_${Math.ceil(Math.random() * 4)}`;
+				/*
 				this.initialStyles.transition = "none";
 				this.initialStyles.transform = "rotate3d(" + this.plusOrMinusOne() + "," + this.plusOrMinusOne() + "," + this.plusOrMinusOne() + "," + Math.floor(Math.random() * 800 + 300) + "deg)";
 				setTimeout(() => {
@@ -71,6 +77,7 @@
 					let endRotate = ((Math.floor(Math.random() * 4)) * 90);
 					this.initialStyles.transform = "rotate3d(0, 0, 1, " + endRotate + "deg)";
 				}, 10);
+				*/
 			}
 		},
 		watch: {
@@ -110,11 +117,7 @@
 					}, 600);
 
 					setTimeout(() => {
-						this.faces.f_back = "hide";
-						this.faces.f_bottom = "hide";
-						this.faces.f_left = "hide";
-						this.faces.f_right = "hide";
-						this.faces.f_top = "hide";
+						this.showAllFace = false;
 					}, 3000);
 
 				}

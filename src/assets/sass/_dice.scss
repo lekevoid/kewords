@@ -1,9 +1,56 @@
-@keyframes DiceRollOne {
-	0%{
+@mixin animPositionStart($p) {
+	@if $p==1 {
+		transform: rotate3d(0, 1, 0, 150deg);
+	}
 
+	@else if $p==2 {
+		transform: rotate3d(0, 1, 1, 150deg);
+	}
+
+	@else if $p==3 {
+		transform: rotate3d(1, 0, 0, 150deg);
+	}
+
+	@else if $p==4 {
+		transform: rotate3d(1, 0, 1, 150deg);
+	}
+
+	@else if $p==5 {
+		transform: rotate3d(1, 1, 0, 150deg);
+	}
+
+	@else if $p==6 {
+		transform: rotate3d(1, 1, 1, 150deg);
 	}
 }
+
+@mixin animPositionEnd($p) {
+	transform: rotate3d(0, 0, 1, #{$p * 90}deg);
+}
+
+@for $start from 1 through 10 {
+	@for $end from 1 through 4 {
+		@keyframes animDiceRoll_#{$start}_#{$end} {
+			0% {
+				@include animPositionStart($start);
+			}
+
+			100% {
+				@include animPositionEnd($end);
+			}
+		}
+	}
+}
+
 .die {
+	@for $start from 1 through 10 {
+		@for $end from 1 through 4 {
+			&.anim_#{$start}_#{$end} {
+				animation: animDiceRoll_#{$start}_#{$end} 2s ease-out 0s 1 forwards;
+			}
+		}
+	}
+
 	align-items: center;
 	box-sizing: border-box;
 	display: flex;
@@ -20,10 +67,6 @@
 
 	&.no_anim {
 		transition: none;
-	}
-
-	&.anim_1{
-		animation:diceRollOne 2s ease-out 0 1 forwards;
 	}
 
 	.face {
