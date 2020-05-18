@@ -110,7 +110,6 @@
 					}, 600);
 
 					setTimeout(() => {
-						console.log("Dice should be shuffled by now");
 						this.faces.f_back = "hide";
 						this.faces.f_bottom = "hide";
 						this.faces.f_left = "hide";

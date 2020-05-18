@@ -1,3 +1,8 @@
+@keyframes DiceRollOne {
+	0%{
+
+	}
+}
 .die {
 	align-items: center;
 	box-sizing: border-box;
@@ -15,6 +20,10 @@
 
 	&.no_anim {
 		transition: none;
+	}
+
+	&.anim_1{
+		animation:diceRollOne 2s ease-out 0 1 forwards;
 	}
 
 	.face {

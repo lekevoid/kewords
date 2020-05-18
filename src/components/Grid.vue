@@ -8,12 +8,12 @@
 	</div>
 </template>
 <script>
-	import Die from "./Die.vue";
+	import DieClassic from "./DieClassic.vue";
 
 	export default {
 		name: "Grid",
 		components: {
-			Die
+			Die: DieClassic
 		},
 		data() {
 			return {
