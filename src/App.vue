@@ -1,7 +1,7 @@
 <template>
-	<div id="app" :class="[{ is_running: gameRunning, is_paused: gamePaused, is_ended: gameEnded, dictionary_open: dictionaryOpen }]">
+	<div id="app" :class="['theme_'+theme, { is_running: gameRunning, is_paused: gamePaused, is_ended: gameEnded, dictionary_open: dictionaryOpen }]">
 		<div class="wrap" id="left">
-			<ParamsForm :startGridX="gridX" :startGridY="gridY" :isGameRunning="gameRunning" :lang="language" />
+			<ParamsForm :startGridX="gridX" :startGridY="gridY" :isGameRunning="gameRunning" :lang="language" :theme="theme" />
 			<Timer :initialTime="initialTimeSeconds" :isGameRunning="gameRunning" :isGamePaused="gamePaused" :isGameEnded="gameEnded" />
 			<div id="actions">
 				<div :class="['plays', { visible: !gameRunning }]">
@@ -20,9 +20,9 @@
 			</div>
 		</div>
 		<div class="wrap" id="right">
-			<Grid :gridX="gridX" :gridY="gridY" :allDiceTemplates="dice" :isGameRunning="gameRunning" />
+			<Grid :gridX="gridX" :gridY="gridY" :allDiceTemplates="dice" :isGameRunning="gameRunning" :theme="theme" />
 		</div>
-		<Dico :open="dictionaryOpen" />
+		<Dico :open="dictionaryOpen" :theme="theme" />
 		<div id="pauseOverlay" v-if="gamePaused" @click="togglePause">
 			<font-awesome-icon icon="pause" />
 		</div>
@@ -60,7 +60,8 @@
 				language: "en",
 				initialTimeSeconds: 300,
 				forceLetterResize: true,
-				dictionaryOpen: false
+				dictionaryOpen: false,
+				theme: "matrix",
 			}
 		},
 		methods: {
@@ -101,6 +102,9 @@
 					default:
 						this.diceTemplates = ["aaafrs", "aaeeee", "aaeeoo", "aafirs", "abdeio", "adennn", "aeeeem", "aeegmu", "aegmnn", "aeilmn", "aeinou", "afirsy", "@$&#%*", "bbjkxz", "ccenst", "cddlnn", "ceiitt", "ceipst", "cfgnuy", "ddhnot", "dhhlor", "dhhnow", "dhlnor", "ehilrs", "eiilst", "eilpst", "eioeio", "emttto", "ensssu", "gorrvw", "hirstv", "hoprst", "iprsyy", "jk%wxz", "nootuw", "ooottu"];
 				}
+			},
+			changeTheme(to) {
+				this.theme = to;
 			},
 			toggleGame() {
 				/* Rest Game State */

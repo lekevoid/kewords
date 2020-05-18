@@ -25,7 +25,9 @@
 </template>
 <script>
 	import icon_dictionary from "../assets/img/icon_dictionary.svg";
+	import icon_dictionary_matrix from "../assets/img/icon_dictionary_matrix.svg";
 	import icon_search from "../assets/img/icon_search.svg";
+	import icon_search_matrix from "../assets/img/icon_search_matrix.svg";
 
 	const axios = require("axios");
 
@@ -39,12 +41,13 @@
 				apiResult: "",
 				apiError: "",
 				definitions: "",
-				icon_dictionary: icon_dictionary,
-				icon_search: icon_search,
+				icon_dictionary: (this.theme === "matrix" ? icon_dictionary_matrix : icon_dictionary),
+				icon_search: (this.theme === "matrix" ? icon_search_matrix : icon_search),
 			}
 		},
 		props: {
-			open: Boolean
+			open: Boolean,
+			theme: String,
 		},
 		methods: {
 			resetState() {

@@ -35,10 +35,31 @@ body {
 		box-sizing: border-box;
 	}
 
+	&:after {
+		background: linear-gradient(to bottom, #000 60%, #020 100%);
+		content: " ";
+		height: 100%;
+		left: 0;
+		opacity: 0;
+		pointer-events: none;
+		position: fixed;
+		top: 0;
+		transition: opacity 0.6s ease-out 0s;
+		width: 100%;
+		z-index: 1;
+	}
+
 	button {
 		outline: none;
+		transition: border 0.3s, background-color 0.3s, color 0.3s, opacity 0.3s, max-width 0.3s;
+		transition-timing-function: ease-out;
 		-webkit-tap-highlight-color: transparent;
 		tap-highlight-color: transparent;
+	}
+
+	input {
+		transition: border 0.3s, background-color 0.3s, color 0.3s, opacity 0.3s, width 0.3s;
+		transition-timing-function: ease-out;
 	}
 
 	.wrap {
@@ -56,6 +77,7 @@ body {
 			position: relative;
 			transform-origin: left top;
 			width: 25%;
+			z-index: 100;
 		}
 
 		&#right {
@@ -66,6 +88,7 @@ body {
 			max-height: 768px;
 			max-width: 75%;
 			width: 75%;
+			z-index: 100;
 		}
 	}
 

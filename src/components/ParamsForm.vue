@@ -1,10 +1,14 @@
 <template>
 	<div id="params">
 		<form>
-			<div class="row" id="langs">
-				<div class="field">
+			<div class="row" id="langs_themes">
+				<div class="field" id="langs">
 					<button type="button" id="lang_en" @click="changeLang('en')" :class="{active: lang === 'en'}">EN</button>
 					<button type="button" id="lang_fr" @click="changeLang('fr')" :class="{active: lang === 'fr'}">FR</button>
+				</div>
+				<div class="field" id="themes">
+					<button type="button" id="theme_classic" @click="changeTheme('classic')" :class="{active: theme === 'classic'}">Classic</button>
+					<button type="button" id="theme_matrix" @click="changeTheme('matrix')" :class="{active: theme === 'matrix'}">Matrix</button>
 				</div>
 			</div>
 			<div id="core_params">
@@ -61,7 +65,7 @@
 				minutes: 5
 			}
 		},
-		props: ["lang", "startGridX", "startGridY", "isGameRunning"],
+		props: ["lang", "startGridX", "startGridY", "isGameRunning", "theme"],
 		methods: {
 			grid() {
 				if (this.lockXY) {
@@ -102,6 +106,9 @@
 			},
 			changeLang(to) {
 				this.$parent.changeLang(to);
+			},
+			changeTheme(to) {
+				this.$parent.changeTheme(to);
 			}
 		},
 		created() {

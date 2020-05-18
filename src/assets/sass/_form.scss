@@ -54,6 +54,7 @@
 
 			button {
 				align-items: center;
+				appearance: none;
 				border: 0 none;
 				color: #FFF;
 				cursor: pointer;
@@ -67,10 +68,8 @@
 				position: absolute;
 				text-shadow: 1px 1px 2px #000;
 				top: 0;
-				transition: background-color 0.3s, opacity 0.3s;
 				width: 4rem;
 				z-index: 10;
-				appearance: none;
 
 				&.num_down {
 					background: radial-gradient(ellipse at center, #F66 0%, #A00 100%);
@@ -99,6 +98,7 @@
 		}
 
 		button#lock_x_y {
+			appearance: none;
 			background-color: #999;
 			border: 1px solid #666;
 			border-radius: 1rem;
@@ -115,7 +115,6 @@
 			position: relative;
 			transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, opacity 0.3s;
 			width: 5rem;
-			appearance: none;
 
 			&:hover {}
 
@@ -158,30 +157,52 @@
 		}
 	}
 
-	#langs {
-		display: block;
+	#langs_themes {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		padding: 20px 0;
 		transition: margin 0.6s;
+		width: 100%;
 
 		.field {
 			align-items: center;
 			display: flex;
+			flex: 1 1 45%;
 			justify-content: center;
-			width: 100%;
+			max-width: 65%;
+			transition: max-width 0.6s ease-out;
+			width: auto;
+
+			&#langs {
+				button {
+					background-size: cover;
+					max-width: 60px;
+					width: 50%;
+				}
+			}
+
+			&#themes {
+				button {
+					background-size: contain;
+					max-width: 40px;
+					width: 4rem;
+				}
+			}
 		}
 
 		button {
 			background-color: transparent;
 			background-position: center;
 			background-repeat: no-repeat;
-			background-size: contain;
 			border: 0 none;
 			border-radius: 10px;
 			color: transparent;
 			cursor: pointer;
 			font-size: 3vmin;
-			height: 6rem;
+			height: 4rem;
 			justify-self: flex-end;
-			margin: 0 1vmin;
+			margin: 0 0.4vmin;
 			max-width: 96px;
 			opacity: 0.6;
 			outline: none;
@@ -197,6 +218,14 @@
 
 			&#lang_fr {
 				background-image: url("img/fr.png");
+			}
+
+			&#theme_classic {
+				background-image: url("img/theme_classic.png");
+			}
+
+			&#theme_matrix {
+				background-image: url("img/theme_matrix.png");
 			}
 
 			&:hover {
@@ -235,7 +264,6 @@
 		justify-content: space-between;
 		max-width: 0%;
 		opacity: 0;
-		transition: opacity 0.3s ease-out 0s, max-width 0s ease-out 0.3s;
 		width: 100%;
 
 		&.visible {
@@ -263,8 +291,8 @@
 			background: radial-gradient(ellipse at center, #6F6 0%, #060 100%);
 			box-shadow: inset 0 0 4rem #040;
 			color: #080;
-			width: 100%;
 			flex-basis: 100%;
+			width: 100%;
 
 			&:hover {
 				box-shadow: inset 0 0 8rem #8F8;
@@ -275,8 +303,8 @@
 			background: radial-gradient(ellipse at center, #F66 0%, #A00 100%);
 			box-shadow: inset 0 0 4rem #400;
 			color: #800;
-			width: 45%;
 			flex-basis: 45%;
+			width: 45%;
 
 			&:hover {
 				box-shadow: inset 0 0 8rem #F88;
@@ -287,8 +315,8 @@
 			background: radial-gradient(ellipse at center, #FF6 0%, #AA0 100%);
 			box-shadow: inset 0 0 4rem #440;
 			color: #880;
-			width: 45%;
 			flex-basis: 45%;
+			width: 45%;
 
 			&:hover {
 				box-shadow: inset 0 0 8rem #FF8;
@@ -306,10 +334,22 @@
 #app.is_running {
 	#params {
 		#langs {
+			max-width: 100%;
+
 			button:not(.active) {
 				margin: 0;
 				max-width: 0%;
 				pointer-events: none;
+			}
+		}
+
+		#themes {
+			margin: 0;
+			max-width: 0%;
+			pointer-events: none;
+
+			button {
+				opacity: 0;
 			}
 		}
 	}

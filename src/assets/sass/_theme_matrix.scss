@@ -1,0 +1,201 @@
+#app.theme_matrix {
+	$green: #0F0;
+	$red: #F00;
+	$yellow: #FF0;
+
+	&:after {
+		background: linear-gradient(to bottom, #000 60%, #020 100%);
+		opacity: 1;
+	}
+
+	#params {
+		transition: opacity 0.6s;
+
+		#langs_themes .field button {
+			box-shadow: 0px 0px 12px $green, 0px 0px 12px $green;
+		}
+
+		h1 {
+			color: $green;
+		}
+
+		#dimensions,
+		#time {
+			span {
+				color: $green;
+			}
+
+			.field {
+				border: 2px solid $green;
+
+				input[type="number"],
+				input[type="number"] {
+					background: #000 none;
+					box-shadow: none;
+					color: $green;
+				}
+
+				button {
+					&.num_up {
+						background: #030;
+						border-right: 1px solid $green;
+						color: $green;
+					}
+
+					&.num_down {
+						background: #300;
+						border-left: 1px solid $green;
+						color: $green;
+					}
+				}
+			}
+		}
+
+		#dimensions button#lock_x_y.active {
+			background: #000 none;
+			border: 2px solid $green;
+			color: $green;
+		}
+	}
+
+	#timer {
+		#view_options {
+			border: 2px solid $green;
+			color: $green;
+
+			button {
+				background: #000;
+				border: 1px solid $green;
+				box-shadow: none;
+				color: $green;
+				transition: opacity 0.3s;
+
+				&:disabled {
+					opacity: 0.2;
+				}
+			}
+		}
+
+		#view_timer #time {
+
+			.number,
+			.colon {
+				color: $green;
+			}
+		}
+	}
+
+	#actions {
+		button {
+			background: #000;
+			border: 2px solid #000;
+			box-shadow: none;
+			color: #000;
+			font-size: 4rem;
+
+			&.play {
+				border-color: $green;
+
+				svg {
+					filter: drop-shadow(0 0 0.8px $green) drop-shadow(0 0 0.8px $green) drop-shadow(0 0 0.8px $green) drop-shadow(0 0 0.8px $green) drop-shadow(0 0 0.8px $green) drop-shadow(0 0 0.8px $green);
+				}
+			}
+
+			&.stop {
+				border-color: $red;
+
+				svg {
+					filter: drop-shadow(0 0 0.8px $red) drop-shadow(0 0 0.8px $red) drop-shadow(0 0 0.8px $red) drop-shadow(0 0 0.8px $red) drop-shadow(0 0 0.8px $red) drop-shadow(0 0 0.8px $red);
+				}
+			}
+
+			&.pause {
+				border-color: $yellow;
+
+				svg {
+					filter: drop-shadow(0 0 0.8px $yellow) drop-shadow(0 0 0.8px $yellow) drop-shadow(0 0 0.8px $yellow) drop-shadow(0 0 0.8px $yellow) drop-shadow(0 0 0.8px $yellow) drop-shadow(0 0 0.8px $yellow);
+				}
+			}
+		}
+	}
+
+	#dictionary {
+		background-color: #010;
+		border-left: 1px solid darken($green, 20);
+
+		.btn_open {
+			background-color: #010;
+			border: 2px solid darken($green, 20);
+			border-right: 2px #010 solid;
+			opacity: 1;
+			transform: translateX(calc(-100% + 1px));
+			transition: opacity 0.3s;
+
+			img {
+				opacity: 0.4;
+			}
+		}
+
+		&.open {
+			.btn_open {
+				opacity: 1;
+			}
+		}
+
+		.input_word {
+			border-color: $green;
+		}
+
+		.btn_search {
+			background: #000;
+			border: 2px solid $green;
+			transition: filter 0.3s;
+		}
+
+		&.invalid {
+			.input_word {
+				border-color: $red;
+			}
+
+			.btn_search {
+				filter: hue-rotate(-120deg) saturate(1000%);
+			}
+		}
+	}
+
+	#grid {
+		border: 2px solid $green;
+		box-shadow: none;
+		opacity: 0.8;
+
+		.row {
+			.cell {
+				background-color: #222;
+				border: 1px solid $green;
+			}
+		}
+	}
+
+	.die .face {
+		background-color: #000;
+		border: 2px solid $green;
+		color: $green;
+	}
+
+	#pauseOverlay {
+		background-color: rgba(#000, 0.4);
+		color: #000;
+
+		svg {
+			filter: drop-shadow(0 0 0.8px $green) drop-shadow(0 0 0.8px $green) drop-shadow(0 0 0.8px $green) drop-shadow(0 0 0.8px $green) drop-shadow(0 0 0.8px $green) drop-shadow(0 0 0.8px $green);
+		}
+	}
+
+	&.is_running {
+
+		#params,
+		#timer {
+			opacity: 0.2;
+		}
+	}
+}

@@ -26,7 +26,7 @@
 				dieSize: 80
 			}
 		},
-		props: ["allDiceTemplates", "gridX", "gridY", "isGameRunning", "forceLetterResize"],
+		props: ["allDiceTemplates", "gridX", "gridY", "isGameRunning", "forceLetterResize", "theme"],
 		computed: {
 			biggestSide() {
 				return Math.max(this.gridX, this.gridY);
