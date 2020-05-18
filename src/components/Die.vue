@@ -2,11 +2,11 @@
 	<!-- <div :class="['die', { no_anim: !isGameRunning }]" :style="initialStyles"> -->
 	<div class="die" :style="[initialStyles, dieDims]">
 		<div :class="['face', 'front', faces.f_front, {doubleLetter: faces.f_front.length >= 2}]" :style="[facesTransforms.f_front, dieDims]">{{ faces.f_front }}</div>
-		<div :class="['face', 'back', {doubleLetter: faces.f_back.length >= 2}]" :style="[facesTransforms.f_back, dieDims]">{{ faces.f_back }}</div>
-		<div :class="['face', 'top', {doubleLetter: faces.f_top.length >= 2}]" :style="[facesTransforms.f_top, dieDims]">{{ faces.f_top }}</div>
-		<div :class="['face', 'bottom', {doubleLetter: faces.f_bottom.length >= 2}]" :style="[facesTransforms.f_bottom, dieDims]">{{ faces.f_bottom }}</div>
-		<div :class="['face', 'left', {doubleLetter: faces.f_left.length >= 2}]" :style="[facesTransforms.f_left, dieDims]">{{ faces.f_left }}</div>
-		<div :class="['face', 'right', {doubleLetter: faces.f_right.length >= 2}]" :style="[facesTransforms.f_right, dieDims]">{{ faces.f_right }}</div>
+		<div v-if="faces.f_back !== 'hide'" :class="['face', 'back', {doubleLetter: faces.f_back.length >= 2}]" :style="[facesTransforms.f_back, dieDims]">{{ faces.f_back }}</div>
+		<div v-if="faces.f_top !== 'hide'" :class="['face', 'top', {doubleLetter: faces.f_top.length >= 2}]" :style="[facesTransforms.f_top, dieDims]">{{ faces.f_top }}</div>
+		<div v-if="faces.f_bottom !== 'hide'" :class="['face', 'bottom', {doubleLetter: faces.f_bottom.length >= 2}]" :style="[facesTransforms.f_bottom, dieDims]">{{ faces.f_bottom }}</div>
+		<div v-if="faces.f_left !== 'hide'" :class="['face', 'left', {doubleLetter: faces.f_left.length >= 2}]" :style="[facesTransforms.f_left, dieDims]">{{ faces.f_left }}</div>
+		<div v-if="faces.f_right !== 'hide'" :class="['face', 'right', {doubleLetter: faces.f_right.length >= 2}]" :style="[facesTransforms.f_right, dieDims]">{{ faces.f_right }}</div>
 	</div>
 </template>
 <script>
@@ -108,6 +108,15 @@
 							this.faces.f_top = templateArray[4];
 						}
 					}, 600);
+
+					setTimeout(() => {
+						console.log("Dice should be shuffled by now");
+						this.faces.f_back = "hide";
+						this.faces.f_bottom = "hide";
+						this.faces.f_left = "hide";
+						this.faces.f_right = "hide";
+						this.faces.f_top = "hide";
+					}, 3000);
 
 				}
 			},

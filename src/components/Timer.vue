@@ -1,12 +1,12 @@
 <template>
 	<div id="timer">
 		<div id="view_options">
+			<button type="button" @click="setTimerView('none')" :disabled="view === 'none'">
+				<font-awesome-icon icon="eye-slash" /></button>
 			<button type="button" @click="setTimerView('timer')" :disabled="view === 'timer'">
 				<font-awesome-icon icon="stopwatch" /></button>
 			<!-- <button type="button" @click="setTimerView('hourglass')" :disabled="view === 'hourglass'">
 				<font-awesome-icon icon="hourglass-half" /></button> -->
-			<button type="button" @click="setTimerView('none')" :disabled="view === 'none'">
-				<font-awesome-icon icon="eye-slash" /></button>
 		</div>
 		<div id="view_timer" :class="{ 'blink' : isGameEnded, 'visible' : view === 'timer' }">
 			<div id="time">
@@ -58,7 +58,7 @@
 				droppedSand: {
 					height: "0%"
 				},
-				view: "timer"
+				view: "none"
 			}
 		},
 		props: ["initialTime", "isGameRunning", "isGamePaused", "isGameEnded"],

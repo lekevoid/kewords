@@ -1,7 +1,7 @@
 <template>
 	<div id="dictionary" @submit.prevent="apiCall()" :class="[{ open : open, valid : valid === true, invalid : valid === false }]">
 		<button @click="toggleOpen()" class="btn_open">
-			<span :class="['arrow', { left : !open, right : open }]"></span>
+			<img :src="icon_dictionary" />
 		</button>
 		<form>
 			<input type="text" v-model="word" class="input_word" id="input_word" autocorrect="off" autocapitalize="none" />
@@ -10,12 +10,12 @@
 			</button>
 		</form>
 		<div class="definitions" v-if="valid">
-			<div class="def" v-for="d, i in definitions" :key="i">
+			<div class="def" v-for="(d, i) in definitions" :key="i">
 				<div class="row">
 					<div class="word">{{d.word}} :</div>
 					<div class="type">{{d.type}}</div>
 				</div>
-				<div class="shortdef" v-for="s, k in d.defs" :key="k">
+				<div class="shortdef" v-for="(s, k) in d.defs" :key="k">
 					{{s}}
 				</div>
 			</div>
@@ -24,6 +24,7 @@
 	</div>
 </template>
 <script>
+	import icon_dictionary from "../assets/img/icon_dictionary.svg";
 	import icon_search from "../assets/img/icon_search.svg";
 
 	const axios = require("axios");
@@ -38,7 +39,8 @@
 				apiResult: "",
 				apiError: "",
 				definitions: "",
-				icon_search: icon_search
+				icon_dictionary: icon_dictionary,
+				icon_search: icon_search,
 			}
 		},
 		props: {

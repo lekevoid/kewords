@@ -11,6 +11,7 @@
 	user-select: none;
 	width: 10vmin;
 	transform-style: preserve-3d;
+	will-change: transform;
 
 	&.no_anim {
 		transition: none;
