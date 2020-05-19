@@ -62,7 +62,7 @@
 					this.faces.f_left = "";
 					this.faces.f_right = "";
 					this.faces.f_top = "";
-					this.animationDelay = Math.floor(Math.random() * 3000);
+					this.animationDelay = Math.floor(Math.random() * 2000);
 
 					if (this.template) {
 						const pos = Math.floor(Math.random() * this.template.length);
