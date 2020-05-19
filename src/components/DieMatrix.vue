@@ -65,9 +65,9 @@
 					this.animationDelay = Math.floor(Math.random() * 3000);
 
 					if (this.template) {
-						var pos = Math.floor(Math.random() * this.template.length);
-						var templateArray = this.template.split('');
-						this.faces.f_front = templateArray[0].replace(/@/, 'An')
+						const pos = Math.floor(Math.random() * this.template.length);
+						const templateArray = this.template.split('');
+						this.faces.f_front = templateArray[pos].replace(/@/, 'An')
 															.replace(/\$/, 'Er')
 															.replace(/&/, 'He')
 															.replace(/#/, 'In')
