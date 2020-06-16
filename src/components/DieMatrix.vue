@@ -68,11 +68,11 @@
 						const pos = Math.floor(Math.random() * this.template.length);
 						const templateArray = this.template.split('');
 						this.faces.f_front = templateArray[pos].replace(/@/, 'An')
-															.replace(/\$/, 'Er')
-															.replace(/&/, 'He')
-															.replace(/#/, 'In')
-															.replace(/%/, 'Qu')
-															.replace(/\*/, 'Th');
+																.replace(/\$/, 'Er')
+																.replace(/&/, 'He')
+																.replace(/#/, 'In')
+																.replace(/%/, 'Qu')
+																.replace(/\*/, 'Th');
 					}
 
 					setTimeout(() => {
